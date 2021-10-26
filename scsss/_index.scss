@@ -13,7 +13,8 @@
     display: grid;
     text-align: center;
     background-color: #9c92f5;
-    min-width: 250px;
+    min-width: 300px;
+    border-radius: 15px;
 
     h1 {
         margin: 2rem auto;
@@ -53,5 +54,11 @@
     .connexion__boutton:hover {
         background-color: greenyellow;
         cursor: grabbing;
+    }
+    a {
+        text-decoration: none;
+        color: white;
+        font-size: 2rem;
+        margin: 20px auto;
     }
 }
