@@ -21,13 +21,10 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
 
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
-
-            // $password = hash('PASSWORD_BCRYPT', $password);
-
-            if ($data['password'] === $password) {
-
+            if (password_verify($password, $data['password'])) {
                 $_SESSION['user'] = $data['pseudo'];
                 header('Location:totool.php');
+                die();
             } else header('Location:index.php?login_err=password');
         } else header('Location:index.php?login_err=email');
     } else header('Location:index.php?login_err=already');

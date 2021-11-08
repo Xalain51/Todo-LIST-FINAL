@@ -1,7 +1,7 @@
 .accueil {
   margin: auto;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 10% 80% 10%;
   grid-template-rows: 10rem 1fr 10rem;
 }
 
@@ -14,7 +14,6 @@
   display: grid;
   text-align: center;
   background-color: #9c92f5;
-  min-width: 300px;
   border-radius: 15px;
 }
 
@@ -69,6 +68,18 @@
   color: white;
   font-size: 2rem;
   margin: 20px auto;
+}
+
+.alert-danger {
+  font-size: 2rem;
+  color: red;
+  margin: 10px auto;
+}
+
+.alert-success {
+  font-size: 2rem;
+  color: greenyellow;
+  margin: 10px auto;
 }
 
 .totool {
@@ -202,6 +213,9 @@ html {
 @media only screen and (max-width: 37.5em) {
   html {
     font-size: 50%;
+  }
+  html .connexion {
+    grid-column: 1/-1;
   }
 }
 

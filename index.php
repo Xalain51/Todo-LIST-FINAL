@@ -16,25 +16,39 @@
         <div class="connexion">
             <h1>Mytotool</h1>
             <h2>Connexion</h2>
+            <?php
+            if (isset($_GET['reg_err'])) {
+                $err = htmlspecialchars($_GET['reg_err']);
+                switch ($err) {
+                    case 'success':
+            ?>
+                        <div class="alert alert-success">
+                            <strong>Succès inscription réussie !</strong>
+                        </div>
+            <?php
+                        break;
+                }
+            } ?>
             <?php if (isset($_GET['login_err'])) {
                 $err = htmlspecialchars($_GET['login_err']);
                 switch ($err) {
                     case 'password':
             ?>
                         <div class="alert alert-danger">
-                            <strong>Erreur</strong>mot de passe incorrect
+                            <strong>Erreur mot de passe incorrect !</strong>
                         </div>
                     <?php break;
+
                     case 'email':
                     ?>
                         <div class="alert alert-danger">
-                            <strong>Erreur</strong>email incorrect
+                            <strong>Erreur email incorrect !</strong>
                         </div>
                     <?php break;
                     case 'already':
                     ?>
                         <div class="alert alert-danger">
-                            <strong>Erreur</strong>aucun compte ne correspond
+                            <strong>Erreur aucun compte ne correspond !</strong>
                         </div>
             <?php break;
                 }

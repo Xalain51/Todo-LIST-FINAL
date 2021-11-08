@@ -15,50 +15,43 @@
     <div class="accueil">
         <div class="connexion">
             <h1>Mytotool</h1>
-            <h2>Connexion</h2>
+            <h2>Inscription</h2>
             <?php
             if (isset($_GET['reg_err'])) {
                 $err = htmlspecialchars($_GET['reg_err']);
                 switch ($err) {
-                    case 'success':
-            ?>
-                        <div class="alert alert-success">
-                            <strong>Succès</strong> inscription réussie !
-                        </div>
-                    <?php
-                        break;
                     case 'password':
-                    ?>
+            ?>
                         <div class="alert alert-danger">
-                            <strong>Erreur</strong> mot de passe différent !
+                            <strong>Erreur mot de passe différent !</strong>
                         </div>
                     <?php
                         break;
                     case 'email':
                     ?>
                         <div class="alert alert-danger">
-                            <strong>Erreur</strong> email invalide !
+                            <strong>Erreur email invalide !</strong>
                         </div>
                     <?php
                         break;
                     case 'email_length':
                     ?>
                         <div class="alert alert-danger">
-                            <strong>Erreur</strong> email trop long !
+                            <strong>Erreur email trop long !</strong>
                         </div>
                     <?php
                         break;
                     case 'pseudo_length':
                     ?>
                         <div class="alert alert-danger">
-                            <strong>Erreur</strong> pseudo trop long !
+                            <strong>Erreur pseudo trop long !</strong>
                         </div>
                     <?php
                         break;
                     case 'already':
                     ?>
                         <div class="alert alert-danger">
-                            <strong>Erreur</strong> ce compte existe déjà !
+                            <strong>Erreur ce compte existe déjà !</strong>
                         </div>
             <?php
                         break;
