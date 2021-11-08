@@ -100,8 +100,9 @@
 
             i {
                 color: red;
-                grid-column: 3;
+                grid-column: 3/4;
                 padding: 10px;
+                margin: auto;
             }
         }
     }
