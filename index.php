@@ -55,7 +55,7 @@
             }
             ?>
             <form method="post" action="connexion.php">
-                <input type="email" class="connexion__info" required="required" name="email" placeholder="Votre pseudo ou email">
+                <input type="email" class="connexion__info" required="required" name="email" placeholder="Votre email">
                 <input type="password" class="connexion__info" required="required" name="password" placeholder="Votre mot de passe">
                 <input type="submit" class="connexion__boutton" placeholder="Se connecter">
             </form>

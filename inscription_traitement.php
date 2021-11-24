@@ -8,7 +8,7 @@ if (isset($_POST['pseudo']) && isset($_POST['email']) && isset($_POST['password'
     $password = htmlspecialchars($_POST['password']);
     $password_retype = htmlspecialchars($_POST['password_retype']);
 
-    $check = $db->prepare('SELECT pseudo, email, password FROM utilisateurs WHERE email =?');
+    $check = $db->prepare('SELECT pseudo, email, password FROM users WHERE email =?');
     $check->execute(array($email));
     $data = $check->fetch();
     $row = $check->rowCount();
@@ -24,7 +24,7 @@ if (isset($_POST['pseudo']) && isset($_POST['email']) && isset($_POST['password'
 
                     if ($password == $password_retype) {
                         $password = password_hash($password, PASSWORD_BCRYPT);
-                        $insert = $db->prepare('INSERT INTO utilisateurs(pseudo, email, password) VALUES(:pseudo, :email, :password)');
+                        $insert = $db->prepare('INSERT INTO users(pseudo, email, password) VALUES(:pseudo, :email, :password)');
                         $insert->execute(array(
                             'pseudo' => $pseudo,
                             'email' => $email,

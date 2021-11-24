@@ -91,8 +91,8 @@
   flex-direction: column;
   align-items: center;
   background-color: #9c92f5;
-  height: 10rem;
   color: white;
+  padding: 30px;
   font-family: "poppins";
 }
 
@@ -112,6 +112,27 @@
   flex-direction: column;
   align-items: center;
   width: 90%;
+}
+
+.totool__contenus__contenu {
+  text-align: center;
+}
+
+.totool__contenus__options {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.totool__contenus__options__supprimer i {
+  color: red;
+  grid-column: 3/4;
+  padding: 0px 10px;
+  margin: auto;
+}
+
+.totool__contenus__options__modifier {
+  color: #9c92f5;
 }
 
 .totool__contenus__formulaire {
@@ -152,7 +173,7 @@
   grid-template-columns: 20% 60% 20%;
   margin: 2rem auto;
   width: 90%;
-  height: 6rem;
+  padding: 20px;
   font-family: "poppins";
   font-size: 2rem;
   align-items: center;
@@ -192,13 +213,6 @@
 
 .totool__contenus__checkbox input[type="checkbox"]:checked:after {
   display: block;
-}
-
-.totool__contenus__checkbox i {
-  color: red;
-  grid-column: 3/4;
-  padding: 10px;
-  margin: auto;
 }
 
 * {

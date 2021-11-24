@@ -9,7 +9,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
     $password = htmlspecialchars($_POST['password']);
 
-    $check = $db->prepare('SELECT pseudo, email, password FROM utilisateurs WHERE email=?');
+    $check = $db->prepare('SELECT * FROM users WHERE email=?');
 
     $check->execute(array($email));
 
@@ -22,7 +22,8 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
 
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             if (password_verify($password, $data['password'])) {
-                $_SESSION['user'] = $data['pseudo'];
+                $_SESSION['user'] = $data['id'];
+                $_SESSION['pseudo'] = $data['pseudo'];
                 header('Location:totool.php');
                 die();
             } else header('Location:index.php?login_err=password');

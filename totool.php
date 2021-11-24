@@ -1,7 +1,23 @@
 <?php
 session_start();
+
 if (isset($_SESSION['user']))
     // header('Location:index.php');
+    require_once("config.php");
+
+$sql = "SELECT tasks.id, tasks.title, tasks.user_id FROM `tasks` 
+JOIN users ON users.id = tasks.user_id 
+WHERE tasks.user_id = " . $_SESSION['user'];
+
+
+$req = $db->prepare($sql);
+if (!$req->execute()) {
+    echo "nop";
+    die();
+}
+$tasks = $req->fetchAll();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -19,42 +35,28 @@ if (isset($_SESSION['user']))
 <body>
     <div class="totool">
         <div class="totool__menu">
-            <h1>
-                <?php echo $_SESSION['user']; ?> totool
-            </h1>
-
+            <h1>Mytotool</h1>
+            <h2> <?php echo $_SESSION['pseudo']; ?> </h2>
             <a href="deconnexion.php">Se déconnecter</a>
 
         </div>
         <div class="totool__contenus">
-            <form class="totool__contenus__formulaire" method="post">
-                <input type="text" placeholder="Ajouter une tâche" name=""><i class="fas fa-paper-plane"></i>
+            <form class="totool__contenus__formulaire" method="post" action="ajoutache.php">
+                <input type="text" placeholder="Ajouter une tâche" name="task">
+                <button><i class="fas fa-paper-plane"></i></button>
             </form>
-            <div class="totool__contenus__checkbox">
-                <input type="checkbox">
-                <label>Faire un bisous à Valentin</label>
-                <i class="fas fa-trash-alt"></i>
-            </div>
-            <div class="totool__contenus__checkbox">
-                <input type="checkbox">
-                <label>Faire un bisous à Kamel</label>
-                <i class="fas fa-trash-alt"></i>
-            </div>
-            <div class="totool__contenus__checkbox">
-                <input type="checkbox">
-                <label>Faire un bisous à Michel</label>
-                <i class="fas fa-trash-alt"></i>
-            </div>
-            <div class="totool__contenus__checkbox">
-                <input type="checkbox">
-                <label>Faire un bisous à Val</label>
-                <i class="fas fa-trash-alt"></i>
-            </div>
-            <div class="totool__contenus__checkbox">
-                <input type="checkbox">
-                <label>Faire un bisous à Thibault</label>
-                <i class="fas fa-trash-alt"></i>
-            </div>
+
+            <?php foreach ($tasks as $task) { ?>
+
+                <div class="totool__contenus__checkbox">
+                    <input type="checkbox">
+                    <div class="totool__contenus__contenu"><?= $task["title"] ?></div>
+                    <div class="totool__contenus__options">
+                        <div class="totool__contenus__options__modifier"><a href="/edit.php"></a><i class="fas fa-edit"></i></div>
+                        <div class="totool__contenus__options__supprimer"><a href="/delete.php?task_id=<?= $task["id"] ?>"><i class="fas fa-trash-alt"></i></a></div>
+                    </div>
+                </div>
+            <?php } ?>
         </div>
     </div>
 
