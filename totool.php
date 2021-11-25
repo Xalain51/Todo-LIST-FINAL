@@ -42,8 +42,8 @@ $tasks = $req->fetchAll();
         </div>
         <div class="totool__contenus">
             <form class="totool__contenus__formulaire" method="post" action="ajoutache.php">
-                <input type="text" placeholder="Ajouter une tâche" name="task">
-                <button><i class="fas fa-paper-plane"></i></button>
+                <input type="text" placeholder="Ajouter une tâche" name="title">
+                <button name="envoyer"><i class="fas fa-paper-plane"></i></button>
             </form>
 
             <?php foreach ($tasks as $task) { ?>
@@ -52,8 +52,8 @@ $tasks = $req->fetchAll();
                     <input type="checkbox">
                     <div class="totool__contenus__contenu"><?= $task["title"] ?></div>
                     <div class="totool__contenus__options">
-                        <div class="totool__contenus__options__modifier"><a href="/edit.php"></a><i class="fas fa-edit"></i></div>
-                        <div class="totool__contenus__options__supprimer"><a href="/delete.php?task_id=<?= $task["id"] ?>"><i class="fas fa-trash-alt"></i></a></div>
+                        <div class="totool__contenus__options__modifier"><a href="/edit.php?id=<?= $task["id"] ?>"><i class="fas fa-edit"></i></a></div>
+                        <div class="totool__contenus__options__supprimer"><a href="/delete.php?id=<?= $task["id"] ?>"><i class="fas fa-trash-alt"></i></a></div>
                     </div>
                 </div>
             <?php } ?>
